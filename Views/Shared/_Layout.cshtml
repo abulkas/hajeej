@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top @(@Request.AppRelativeCurrentExecutionFilePath.ToString() == "~/" ? "notShrink" : "isShrink")" id="banner">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><span>شعار الحملة</span> هنا</a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">@Html.ActionLink("الرئيسية", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">@Html.ActionLink("عن الحملة", "About", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">@Html.ActionLink("تواصل معنا", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">@Html.ActionLink("الأخبار", "News", "Home", null, new { @class = "nav-link" })</li>
+                    
+                    @Html.Partial("_LoginPartial")
+                    <!-- Dropdown -->
+
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <br />
+
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_ftr">
+                        <h4 class="sf_title">تواصل معنا</h4>
+                        <ul>
+                            <li>دولة الكويت - الكويت العاصمة - السالمية</li>
+                            <li>+965777777777</li>
+                            <li>info@yaseen.org</li>
+                        </ul>
+                    </div>
+                </div> <!--  End Col -->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_ftr">
+                        <h4 class="sf_title">حول الحملة</h4>
+                        <ul>
+                            <li><a href="#">عن الحملة</a></li>
+                            <li><a href="#">المشرفون</a></li>
+                            <li><a href="#">الحجاج</a></li>
+                            <li><a href="#">الشروط و الأحكام</a></li>
+                            <li><a href="#">تواصل معنا</a></li>
+                        </ul>
+                    </div>
+                </div> <!--  End Col -->
+
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_ftr">
+                        <h4 class="sf_title">تنبيهات البريد الالكتروني</h4>
+                        <div class="newsletter_form">
+                            <p>أخي الحاج، ضع بريدك الالكتروني هنا لكي يصلك كل جديد من مشرفك</p>
+                            <form method="post" class="form-inline">
+                                <input name="EMAIL" id="email" placeholder="بريدك الالكتروني هنا" class="form-control" type="email">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div> <!--  End Col -->
+
+            </div>
+        </div>
+
+
+        <div class="ftr_btm_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="ftr_social_icon">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="copyright_text text-center">© جميع الحقوق محفوظة حملة الياسين | @DateTime.Now.Year</p>
+                    </div>
+
+                  
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+   
+    @RenderSection("scripts", required: false)
+</body>
+</html>
